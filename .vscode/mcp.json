@@ -3,6 +3,14 @@
     "mintlify-docs": {
       "type": "http",
       "url": "https://mintlify.com/docs/mcp"
+    },
+    "taskbean-docs": {
+      "type": "http",
+      "url": "https://docs.taskbean.ai/mcp"
+    },
+    "Mintlify": {
+      "type": "http",
+      "url": "https://mcp.mintlify.com"
     }
   }
 }

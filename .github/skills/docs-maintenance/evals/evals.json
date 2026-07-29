@@ -37,6 +37,30 @@
           "value": "Rejects taskbean.ai as product truth and uses it only to verify the docs.taskbean.ai link."
         }
       ]
+    },
+    {
+      "id": "orchestrated-improvement",
+      "prompt": "Plan, author, evaluate, and improve the Taskbean installation documentation.",
+      "mode": "implicit",
+      "assertions": [
+        {
+          "type": "review",
+          "target": "response",
+          "value": "Uses the Taskbean docs coordinator for planning, delegates authoring to the non-user-invokable maintainer, delegates evaluation to a fresh non-user-invokable verifier, and permits at most one repair."
+        }
+      ]
+    },
+    {
+      "id": "published-agent-context",
+      "prompt": "Make Taskbean's published agent context accurate and discoverable.",
+      "mode": "explicit-skill",
+      "assertions": [
+        {
+          "type": "review",
+          "target": "response",
+          "value": "Preserves Mintlify's generated llms.txt when it is accurate, maintains a source-backed skill.md override, checks the Taskbean search MCP, and does not treat published context as product truth."
+        }
+      ]
     }
   ],
   "trigger_evals": {
@@ -48,6 +72,10 @@
       {
         "id": "audit-readiness",
         "prompt": "Audit Taskbean docs for stale product behavior and AI readiness."
+      },
+      {
+        "id": "improve-agent-context",
+        "prompt": "Improve the Taskbean docs llms.txt, skill.md, and MCP discoverability."
       }
     ],
     "should_not_trigger": [

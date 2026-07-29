@@ -28,7 +28,34 @@ npm run check:external-links
 - `.mintlify/AGENTS.md` carries the subset that Mintlify's agent reads.
 - `.github/skills/mintlify` is the upstream Mintlify authoring skill.
 - `.github/skills/docs-maintenance` defines Taskbean synchronization and verification.
-- `.github/agents/docs-maintainer.agent.md` and `docs-verifier.agent.md` enforce Actor/Verifier separation.
+- `.github/agents/taskbean-docs.agent.md` is the only user-invokable coordinator.
+- `.github/agents/docs-maintainer.agent.md` and `docs-verifier.agent.md` are non-user-invokable Actor and Verifier roles.
+- `skill.md` overrides Mintlify's generated product skill with source-backed Taskbean guidance.
+- Mintlify generates [llms.txt](https://docs.taskbean.ai/llms.txt) from current page descriptions; do not commit a duplicate while the generated file remains accurate.
+
+Set **Taskbean docs** as your default agent in the Copilot session settings after the agent profile reaches the repository's default branch.
+
+## MCP servers
+
+`.vscode/mcp.json` exposes three distinct surfaces:
+
+- `mintlify-docs` searches current Mintlify product documentation.
+- `taskbean-docs` searches the published Taskbean documentation and exposes its skill resources.
+- `Mintlify` provides OAuth-protected admin tools for trusted interactive clients.
+
+Clients that use the `mcpServers` schema can connect to the Mintlify admin MCP with:
+
+```json
+{
+  "mcpServers": {
+    "Mintlify": {
+      "url": "https://mcp.mintlify.com"
+    }
+  }
+}
+```
+
+The Mintlify admin MCP requires interactive OAuth. Copilot cloud agent does not support remote OAuth MCP servers, so cloud authoring continues through repository edits and pull requests. The read-only Mintlify and Taskbean search MCP servers remain available to cloud agents.
 
 Update the Mintlify skill with:
 
