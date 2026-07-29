@@ -1,97 +1,38 @@
 ---
-title: "Introduction"
-description: "Welcome to the new home for your documentation"
+title: "Taskbean documentation"
+description: "Use Taskbean to make coding-agent work visible, reviewable, and reportable without sending task data to a cloud service."
+keywords: ["taskbean", "coding agents", "local-first task management", "agent tasks"]
 ---
 
-## Setting up
+Taskbean is a local-first task manager for developers who work with coding agents. It gives agents a CLI for recording work and gives you a desktop app for reviewing tasks, evidence, usage, reminders, and reports.
 
-Get your documentation site up and running in minutes.
+## Two halves, one local record
 
-<Card
-  title="Start here"
-  icon="rocket"
-  href="/quickstart"
-  horizontal
->
-  Follow our three step quickstart guide.
-</Card>
+```mermaid
+flowchart LR
+  Agent["Coding agent"] --> CLI["bean CLI"]
+  Developer["Developer"] --> App["Desktop PWA"]
+  CLI --> DB[("~/.taskbean/taskbean.db")]
+  App --> DB
+```
 
-## Make it yours
+The `bean` CLI and desktop app share the same local SQLite database. The CLI works on Windows, macOS, and Linux. The desktop app includes Windows-specific local AI and notification dependencies, so do not treat its platform support as identical to the CLI.
 
-Design a docs site that looks great and empowers your users.
-
-<Columns cols={2}>
-  <Card
-    title="Edit locally"
-    icon="pen-to-square"
-    href="/development"
-  >
-    Edit your docs locally and preview them in real time.
+<CardGroup cols={2}>
+  <Card title="Start in five minutes" icon="rocket" href="/quickstart">
+    Install the CLI, record a task, add the Agent Skill, and open the app.
   </Card>
-  <Card
-    title="Customize your site"
-    icon="palette"
-    href="/essentials/settings"
-  >
-    Customize the design and colors of your site to match your brand.
+  <Card title="Understand the model" icon="diagram-project" href="/concepts/architecture">
+    Learn how Projects, Workspaces, Agent Sessions, Tasks, and evidence fit together.
   </Card>
-    <Card
-    title="Set up navigation"
-    icon="map"
-    href="/essentials/navigation"
-  >
-    Organize your docs to help users find what they need and succeed with your product.
+  <Card title="Use the CLI" icon="terminal" href="/cli/lifecycle">
+    Track task lifecycle, reports, projects, Chronicle evidence, and skill updates.
   </Card>
-  <Card
-    title="API documentation"
-    icon="terminal"
-    href="/api-reference/introduction"
-  >
-    Auto-generate API documentation from OpenAPI specifications.
+  <Card title="Use the desktop app" icon="desktop" href="/app/getting-started">
+    Review local work, use on-device AI, manage reminders, and inspect telemetry.
   </Card>
-</Columns>
+</CardGroup>
 
-## Create beautiful pages
+## Local-first by design
 
-Everything you need to create world-class documentation.
-
-<Columns cols={2}>
-  <Card
-    title="Write with MDX"
-    icon="pen-fancy"
-    href="/essentials/markdown"
-  >
-    Use MDX to style your docs pages.
-  </Card>
-  <Card
-    title="Code samples"
-    icon="code"
-    href="/essentials/code"
-  >
-    Add sample code to demonstrate how to use your product.
-  </Card>
-  <Card
-    title="Images"
-    icon="image"
-    href="/essentials/images"
-  >
-    Display images and other media.
-  </Card>
-  <Card
-    title="Reusable snippets"
-    icon="recycle"
-    href="/essentials/reusable-snippets"
-  >
-    Write once and reuse across your docs.
-  </Card>
-</Columns>
-
-## Need inspiration?
-
-<Card
-  title="See complete examples"
-  icon="stars"
-  href="https://mintlify.com/customers"
->
-  Browse our showcase of exceptional documentation sites.
-</Card>
+Taskbean stores tasks, source attribution, aggregate token counts, and review evidence on your machine. Automatic Agent Session and Chronicle ingestion excludes raw prompts, assistant responses, tool output, and code content. User-authored task fields are stored verbatim. See [Privacy and storage](/reference/privacy-storage) for the exact boundary.

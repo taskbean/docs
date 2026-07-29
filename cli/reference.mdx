@@ -1,0 +1,54 @@
+---
+title: "CLI reference"
+description: "Complete current Taskbean CLI command and option reference sourced from the Commander entry point."
+keywords: ["Taskbean CLI reference", "bean commands", "Commander"]
+---
+
+This reference follows [`cli/bin/taskbean.js`](https://github.com/taskbean/taskbean/blob/main/cli/bin/taskbean.js). Do not infer commands from older READMEs.
+
+| Command | Alias | Key arguments and options |
+| --- | --- | --- |
+| `bean add <title>` |  | `--key`, `--agent`, `--session-id`, `--project`, `--json` |
+| `bean done <id>` |  | `--project`, `--json` |
+| `bean list` | `ls` | `--status`, `--all`, `--count`, `--by-project`, `--project`, `--json` |
+| `bean edit <id>` |  | `--title`, `--priority`, `--notes`, `--due-date`, `--tags`, `--project`, `--json` |
+| `bean remove <id>` | `rm` | `--project`, `--json` |
+| `bean start <id>` |  | `--project`, `--json` |
+| `bean block <id>` |  | `--project`, `--json` |
+| `bean remind <title> <when>` |  | Creates a new pending Task with a reminder; supports `--project`, `--json` |
+| `bean report` |  | `--date`, `--format`, `--include-chronicle`, `--project`, `--json` |
+| `bean chronicle` |  | `doctor`, `reconcile`, `suggestions`, `approve`, `link`, `ignore`, `undo` |
+| `bean track` |  | `--path`, `--global`, `--name`, `--json` |
+| `bean untrack` |  | `--path`, `--json` |
+| `bean install` |  | `--global`, `--agent`, `--force`, `--codex-sandbox`, `--json` |
+| `bean projects` |  | `hide`, `show`, `categorize`, `delete`, `--all`, `--hidden`, `--category`, `--json` |
+| `bean package [id]` |  | `--date`, `--format`, `--project`, `--json` |
+| `bean serve` |  | `--port` |
+| `bean upgrade` |  | `--check`, `--yes`, `--dry-run`, `--force`, `--json` |
+| `bean uninstall` |  | `--keep-data`, `--scan`, `--dry-run`, `--yes`, `--force`, `--json` |
+| `bean update-skill` |  | `--apply`, `--project`, `--global`, `--json` |
+
+## Chronicle subcommands
+
+| Command | Key arguments and options |
+| --- | --- |
+| `bean chronicle doctor` | `--json` |
+| `bean chronicle reconcile` | `--since`, `--until`, `--json` |
+| `bean chronicle suggestions` | `--status`, `--json` |
+| `bean chronicle approve <suggestion-id>` | `--title`, `--project`, `--priority`, `--notes`, `--tags`, `--status`, `--work-date`, `--json` |
+| `bean chronicle link <suggestion-id> <todo-id>` | `--project`, `--json` |
+| `bean chronicle ignore <suggestion-id>` | `--json` |
+| `bean chronicle undo <suggestion-id>` | `--json` |
+
+## Project subcommands
+
+| Command | Key arguments and options |
+| --- | --- |
+| `bean projects hide [name]` | `--json` |
+| `bean projects show [name]` | `--json` |
+| `bean projects categorize [name]` | `--category`, `--clear`, `--json` |
+| `bean projects delete [name]` | `--confirm`, `--keep-files`, `--json` |
+
+<Warning>
+  `init`, `count`, and `export` are not current top-level commands. Use `bean list --count` and `bean report --format csv` for those outcomes.
+</Warning>

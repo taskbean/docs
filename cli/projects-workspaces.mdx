@@ -1,0 +1,49 @@
+---
+title: "Projects and Workspaces"
+description: "Track physical Workspaces, manage logical Projects, and control Project visibility and primary paths."
+keywords: ["bean track", "bean projects", "Taskbean Workspace", "Project Key"]
+---
+
+Taskbean separates logical Projects from physical Workspaces. Read the [glossary](/concepts/glossary) before automating project management.
+
+## Track a Workspace
+
+```bash
+bean track
+bean track --path ../another-checkout
+bean track --name "Taskbean docs"
+```
+
+Remove a Workspace from tracking:
+
+```bash
+bean untrack
+bean untrack --path ../another-checkout
+```
+
+## Review Projects
+
+```bash
+bean projects
+bean projects --all
+bean projects --hidden
+```
+
+## Organize visibility
+
+```bash
+bean projects hide taskbean/docs
+bean projects show taskbean/docs
+bean projects categorize taskbean/docs --category documentation
+bean projects categorize taskbean/docs --clear
+```
+
+## Delete Project metadata
+
+```bash
+bean projects delete taskbean/docs --confirm --keep-files
+```
+
+`--confirm` is required. Add `--keep-files` when you only want to delete the Project database record.
+
+Without `--keep-files`, Taskbean also removes the Workspace's `.taskbean.json` and installed Taskbean skill directories. It does not delete the checkout, worktree, or repository.

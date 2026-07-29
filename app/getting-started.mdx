@@ -1,0 +1,65 @@
+---
+title: "Get started with the desktop app"
+description: "Launch the Taskbean desktop PWA with Portless, Python, or the Windows launcher and check backend readiness."
+keywords: ["Taskbean desktop app", "Portless", "Foundry Local", "PWA"]
+---
+
+The desktop app is the human-facing half of Taskbean. It shares `~/.taskbean/taskbean.db` with the CLI and adds on-device AI, task review, reminders, agent usage, Chronicle review, and telemetry.
+
+<Warning>
+  The current app dependency set is Windows-oriented. The `bean` CLI remains the cross-platform surface.
+</Warning>
+
+## Prerequisites
+
+- Windows 10 or 11
+- Python 3.10 or later
+- [Foundry Local](https://github.com/microsoft/Foundry-Local)
+- Node.js 24 or later only when you use the Portless path
+- Docker only when you want the optional Jaeger trace view
+
+## Start with Portless
+
+Portless provides a stable local HTTPS URL:
+
+```bash
+git clone https://github.com/taskbean/taskbean.git
+cd taskbean/app
+npm install
+npm run dev
+```
+
+Open `https://taskbean.localhost`. Portless runs `python agent/main.py` through the `dev:agent` script.
+
+## Start Python directly
+
+```bash
+cd taskbean/app/agent
+pip install -r requirements.txt
+python main.py
+```
+
+Open `http://127.0.0.1:8275`.
+
+## Use the Windows launcher
+
+From `taskbean/app`:
+
+```powershell
+.\launch.ps1
+```
+
+You can also run `launch.cmd`. It delegates to the PowerShell launcher.
+
+## Check readiness
+
+| Endpoint | Meaning |
+| --- | --- |
+| `GET /api/health` | The process is alive. It always returns `200`; inspect `modelReady` and `startupError`. |
+| `GET /api/ready` | The model is ready. It returns `503` while loading, `500` on startup failure, and `200` when ready. |
+
+The first model load can take up to several minutes on some NPU paths.
+
+## Install the PWA
+
+Open the app in Edge or Chrome, then use the browser install control. The installed shell opens in a standalone window. Cached UI assets and selected read-only API responses can load without internet access, but live task data and AI inference still require the local Python backend.

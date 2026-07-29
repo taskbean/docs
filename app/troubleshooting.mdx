@@ -1,0 +1,61 @@
+---
+title: "Troubleshoot the desktop app"
+description: "Diagnose readiness, local ports, model loading, Windows NPU metrics, Chronicle access, and CLI installation conflicts."
+keywords: ["Taskbean troubleshooting", "modelReady", "NPU", "Chronicle doctor"]
+---
+
+## The process is running but the app is not ready
+
+Check health:
+
+```bash
+curl http://127.0.0.1:8275/api/health
+```
+
+`/api/health` always returns `200`. Inspect `modelReady` and `startupError`. Use `/api/ready` when automation needs an HTTP readiness gate.
+
+## The default port is in use
+
+Set `TASKBEAN_PORT`, `taskbean_PORT`, or `PORT`, or set `port` in `~/.taskbean/config.json`. Environment variables take precedence over the config file.
+
+On Windows, inspect the current listener:
+
+```powershell
+Get-NetTCPConnection -LocalPort 8275
+```
+
+## Taskbean appears twice on PATH
+
+```bash
+which bean
+```
+
+On Windows:
+
+```powershell
+where.exe bean
+```
+
+Remove the unwanted npm or binary installation, then run `bean upgrade`.
+
+## Codex cannot write task data
+
+```bash
+bean install --agent codex --codex-sandbox
+```
+
+## Chronicle evidence is unavailable
+
+```bash
+bean chronicle doctor --json
+```
+
+Task reports continue from canonical tasks when Chronicle is disabled, unavailable by policy, or missing local session data.
+
+## NPU usage shows zero on non-English Windows
+
+The current PDH sampler uses the English `GPU Engine` counter name. Localized Windows installations can report `0%` even when inference works. Check model readiness and execution-provider data instead of relying only on the NPU chart.
+
+## Voice input is unavailable
+
+Confirm Windows speech and microphone permissions, then review the `speech` settings in `~/.taskbean/config.json`.

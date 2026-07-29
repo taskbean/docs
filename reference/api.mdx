@@ -1,0 +1,78 @@
+---
+title: "Local API reference"
+description: "Reference the Taskbean desktop app's local health, task, project, model, usage, Chronicle, telemetry, and filesystem endpoints."
+keywords: ["Taskbean API", "localhost API", "health endpoint", "Chronicle API"]
+---
+
+The desktop backend serves a local FastAPI application. The default base URL is `http://127.0.0.1:8275`.
+
+## Process and version
+
+| Method | Path | Purpose |
+| --- | --- | --- |
+| `GET` | `/api/health` | Process health and model state; always returns `200` |
+| `GET` | `/api/ready` | Readiness gate: `200`, `503`, or `500` |
+| `GET` | `/api/version` | App, CLI, Git SHA, and start time |
+| `GET` | `/api/port-info` | Current port configuration |
+| `POST` | `/api/port` | Change the configured backend port |
+| `GET` | `/api/launch-errors` | Recent launcher errors |
+
+## Tasks and Projects
+
+| Method | Path |
+| --- | --- |
+| `GET`, `POST` | `/api/todos` |
+| `GET` | `/api/todos/overdue` |
+| `PATCH`, `DELETE` | `/api/todos/:id` |
+| `GET` | `/api/projects` |
+| `GET` | `/api/projects/tasks?project=<name>` |
+| `POST` | `/api/projects/track` |
+| `POST` | `/api/projects/{name}/hide` |
+| `POST` | `/api/projects/{name}/show` |
+| `POST` | `/api/projects/{name}/category` |
+| `POST` | `/api/projects/{name}/delete` |
+| `POST` | `/api/projects/{name}/untrack` |
+| `GET` | `/api/task-detail/:task_id` |
+| `GET` | `/api/task-detail/:task_id/export?format=md|json` |
+
+## Models and configuration
+
+| Method | Path | Purpose |
+| --- | --- | --- |
+| `GET` | `/api/models` | Foundry Local model catalog |
+| `POST` | `/api/models/switch` | SSE model-switch progress |
+| `GET`, `POST` | `/api/config` | Read or patch validated app config |
+| `GET` | `/api/hardware` | CPU, memory, and accelerator snapshot |
+| `GET` | `/api/hardware/eps` | Foundry Local execution providers |
+
+## Agent usage and Chronicle
+
+| Method | Path |
+| --- | --- |
+| `GET` | `/api/agent-usage` |
+| `GET` | `/api/agent-usage/detection` |
+| `POST` | `/api/agent-usage/settings/{agent}` |
+| `GET` | `/api/copilot-usage` |
+| `GET` | `/api/chronicle/suggestions` |
+| `POST` | `/api/chronicle/suggestions/:id/approve` |
+| `POST` | `/api/chronicle/suggestions/:id/link` |
+| `POST` | `/api/chronicle/suggestions/:id/ignore` |
+| `POST` | `/api/chronicle/suggestions/:id/undo-auto-link` |
+
+## Reports, telemetry, filesystem, and skills
+
+| Method | Path |
+| --- | --- |
+| `GET` | `/api/reports/preview` |
+| `GET` | `/api/templates` |
+| `POST` | `/api/templates/activate` |
+| `POST` | `/api/templates/deactivate` |
+| `GET` | `/api/telemetry/snapshot` |
+| `GET` | `/api/telemetry/stream` |
+| `GET` | `/api/fs/roots` |
+| `GET` | `/api/fs/browse` |
+| `GET` | `/api/skill-status` |
+| `POST` | `/api/skill-update` |
+| `POST` | `/api/command` |
+
+Source: [`app/agent/main.py`](https://github.com/taskbean/taskbean/blob/main/app/agent/main.py).

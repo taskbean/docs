@@ -1,0 +1,79 @@
+---
+title: "Install and update the CLI"
+description: "Install Taskbean with npm, the platform installers, or WinGet, then upgrade or uninstall safely."
+keywords: ["install Taskbean", "bean upgrade", "bean uninstall", "WinGet"]
+---
+
+## Install
+
+Choose one channel. Taskbean records the channel in `~/.taskbean/.install-channel` so `bean upgrade` can use the matching update path.
+
+<CodeGroup>
+
+```bash npm
+npm install -g taskbean
+```
+
+```bash macOS and Linux
+curl -fsSL https://taskbean.ai/install | bash
+```
+
+```powershell Windows PowerShell
+iwr -useb https://taskbean.ai/install.ps1 | iex
+```
+
+```powershell WinGet
+winget install taskbean.taskbean
+```
+
+</CodeGroup>
+
+The npm package requires Node.js 22.13.0 or later. Compiled binaries do not require Node.js.
+
+## Upgrade
+
+Check without changing anything:
+
+```bash
+bean upgrade --check
+```
+
+Preview the update plan:
+
+```bash
+bean upgrade --dry-run
+```
+
+Apply the update:
+
+```bash
+bean upgrade
+```
+
+Set `TASKBEAN_NO_UPGRADE_NOTICE=1` in CI or scripts to suppress interactive update notices.
+
+## Uninstall
+
+Preview what Taskbean will remove:
+
+```bash
+bean uninstall --dry-run
+```
+
+Keep local task data:
+
+```bash
+bean uninstall --keep-data
+```
+
+Scan a directory for manually installed Taskbean skills:
+
+```bash
+bean uninstall --scan ~/projects
+```
+
+If you installed through npm, finish with:
+
+```bash
+npm uninstall -g taskbean
+```

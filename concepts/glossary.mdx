@@ -1,0 +1,48 @@
+---
+title: "Glossary"
+description: "Canonical Taskbean language for Projects, Workspaces, Agent Sessions, Tasks, and unresolved work."
+keywords: ["Taskbean glossary", "Project Key", "Workspace", "Agent Session", "Unassigned Work"]
+---
+
+Use these terms consistently in documentation, integrations, and reports.
+
+<AccordionGroup>
+  <Accordion title="Project">
+    A logical repo or product that work rolls up to for task lists, usage, reconciliation, and reports. A Project is not an individual checkout, worktree, fork, or Agent Session. Git-backed Projects display as `owner/repo` by default.
+  </Accordion>
+  <Accordion title="Project Key">
+    The stable identity used to recognize the same Project across multiple Workspaces. Git-backed work uses the nearest repository owner and name, preferring `upstream` over `origin`. Work without a usable GitHub remote falls back to the canonical local path.
+  </Accordion>
+  <Accordion title="Project Selector">
+    A user-provided value that identifies a Project by key or display name, or a Workspace when the value clearly looks like a path. A Workspace selector resolves to its owning Project.
+  </Accordion>
+  <Accordion title="Workspace">
+    A physical checkout, worktree, fork, or folder where work happens for a Project. Multiple Workspaces can belong to the same Project.
+  </Accordion>
+  <Accordion title="Tracked Project">
+    A Project that appears in default task, usage, reconciliation, and report rollups because at least one Workspace is tracked.
+  </Accordion>
+  <Accordion title="Tracked Workspace">
+    A Workspace that participates in physical-path behavior such as agent detection, skill installation, cleanup, and diagnostics.
+  </Accordion>
+  <Accordion title="Discovered Workspace">
+    A Workspace observed from Agent Session metadata or task provenance but not explicitly tracked. It can support attribution and rollups, but Taskbean does not mutate it with skill files or cleanup actions.
+  </Accordion>
+  <Accordion title="Primary Workspace">
+    The user-changeable Workspace a Project uses by default for path-dependent actions such as opening folders, installing skills, or diagnostics. It is not inferred only from the most recent Agent Session.
+  </Accordion>
+  <Accordion title="Agent Session">
+    One run of a coding agent, scoped to a Workspace, that can create tasks, usage records, or Chronicle evidence. Agent Sessions roll up through their Workspace to a Project.
+  </Accordion>
+  <Accordion title="Copilot Fork">
+    A Copilot-created branch of an existing session or workspace lineage. A Copilot Fork belongs to the same Project as its source and does not create a separate Project.
+  </Accordion>
+  <Accordion title="Task">
+    A unit of developer work that can belong to a Project and carry Workspace provenance. A manually created task without project context may be Project-agnostic and Workspace-agnostic.
+  </Accordion>
+  <Accordion title="Unassigned Work">
+    Tasks, Agent Sessions, or evidence that Taskbean cannot confidently resolve to a Project. Taskbean presents this work for review instead of inventing a Project from a session ID, GUID, or folder basename.
+  </Accordion>
+</AccordionGroup>
+
+The canonical definitions live in [`CONTEXT.md`](https://github.com/taskbean/taskbean/blob/main/CONTEXT.md). Architecture decisions [0001](https://github.com/taskbean/taskbean/blob/main/docs/adr/0001-owner-repo-project-key.md), [0002](https://github.com/taskbean/taskbean/blob/main/docs/adr/0002-first-class-workspaces.md), and [0003](https://github.com/taskbean/taskbean/blob/main/docs/adr/0003-replace-legacy-project-fields.md) explain the identity model.

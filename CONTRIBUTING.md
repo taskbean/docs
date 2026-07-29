@@ -1,34 +1,20 @@
-> **Customize this file**: Tailor this template to your project by noting specific contribution types you're looking for, adding a Code of Conduct, or adjusting the writing guidelines to match your style.
+# Contribute to Taskbean documentation
 
-# Contribute to the documentation
+Use active voice, address the reader as "you," and keep each page focused on a concrete task.
 
-Thank you for your interest in contributing to our documentation! This guide will help you get started.
+## Make a change
 
-## How to contribute
+1. Fork and clone this repository.
+2. Install dependencies with `npm ci`.
+3. Create a branch.
+4. Read `AGENTS.md`, `docs.json`, and the related pages.
+5. Verify product claims against `taskbean/taskbean`.
+6. Run `npm run dev` and inspect the page locally.
+7. Run `npm run check`.
+8. Open a pull request with source evidence and validation results.
 
-### Option 1: Edit directly on GitHub
+New pages must appear in `docs.json`. Internal links use root-relative paths without file extensions.
 
-1. Navigate to the page you want to edit
-2. Click the "Edit this file" button (the pencil icon)
-3. Make your changes and submit a pull request
+## Product language
 
-### Option 2: Local development
-
-1. Fork and clone this repository
-2. Install the Mintlify CLI: `npm i -g mint`
-3. Create a branch for your changes
-4. Make changes
-5. Navigate to the docs directory and run `mint dev`
-6. Preview your changes at `http://localhost:3000`
-7. Commit your changes and submit a pull request
-
-For more details on local development, see our [development guide](development.mdx).
-
-## Writing guidelines
-
-- **Use active voice**: "Run the command" not "The command should be run"
-- **Address the reader directly**: Use "you" instead of "the user"
-- **Keep sentences concise**: Aim for one idea per sentence
-- **Lead with the goal**: Start instructions with what the user wants to accomplish
-- **Use consistent terminology**: Don't alternate between synonyms for the same concept
-- **Include examples**: Show, don't just tell
+Use the canonical terms in [`concepts/glossary.mdx`](concepts/glossary.mdx). Do not use Project and Workspace interchangeably.
