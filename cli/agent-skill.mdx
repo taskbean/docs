@@ -1,0 +1,52 @@
+---
+title: "Agent Skill"
+description: "Install the Taskbean Agent Skill for GitHub Copilot, Claude Code, Codex, OpenCode, and compatible coding agents."
+keywords: ["Taskbean Agent Skill", "Copilot CLI", "Claude Code", "Codex", "OpenCode"]
+---
+
+The Taskbean Agent Skill teaches coding agents when to create, start, block, and complete tasks. Its source lives at [`.agents/skills/taskbean/SKILL.md`](https://github.com/taskbean/taskbean/blob/main/.agents/skills/taskbean/SKILL.md).
+
+## Install by agent
+
+```bash
+bean install --agent copilot
+bean install --agent claude
+bean install --agent codex
+bean install --agent opencode
+bean install --agent all
+```
+
+Add `--global` to install in your home directory instead of the current Project.
+
+| Agent | Install location | Verification |
+| --- | --- | --- |
+| GitHub Copilot CLI | `.agents/skills/taskbean/` and `.github/skills/taskbean/` | Full end-to-end |
+| Claude Code | `.claude/skills/taskbean/` | Full end-to-end |
+| OpenAI Codex | `.agents/skills/taskbean/` | Full end-to-end |
+| OpenCode | `.agents/skills/taskbean/` | Full end-to-end |
+
+Cursor, Windsurf, Cline, and Roo Code have known skill directories in Taskbean's cleanup logic, but Taskbean does not claim full end-to-end verification for them.
+
+## Configure the Codex sandbox
+
+If Codex cannot write to `~/.taskbean`, run:
+
+```bash
+bean install --agent codex --codex-sandbox
+```
+
+This adds `~/.taskbean` to the `sandbox_workspace_write` writable roots in `~/.codex/config.toml`.
+
+## Detect drift
+
+Check installed copies without changing them:
+
+```bash
+bean update-skill --json
+```
+
+Apply the bundled skill:
+
+```bash
+bean update-skill --apply
+```

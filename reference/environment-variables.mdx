@@ -1,0 +1,41 @@
+---
+title: "Environment variables"
+description: "Configure Taskbean data paths, ports, upgrade notices, agent attribution, tests, telemetry, and public URLs."
+keywords: ["TASKBEAN_HOME", "TASKBEAN_DB", "TASKBEAN_PORT", "Taskbean environment variables"]
+---
+
+## CLI and attribution
+
+| Variable | Purpose |
+| --- | --- |
+| `TASKBEAN_HOME` | Override the `~/.taskbean` data directory |
+| `TASKBEAN_DB` | Override the full SQLite database path |
+| `TASKBEAN_NO_UPGRADE_NOTICE=1` | Disable the interactive upgrade notice |
+| `TASKBEAN_AGENT` | Set explicit agent attribution |
+| `TASKBEAN_NATIVE_SESSION_ID` | Set the native Agent Session ID |
+| `CLAUDECODE`, `CLAUDE_SESSION_ID` | Claude Code attribution |
+| `CODEX_SESSION_ID` | Codex attribution |
+| `OPENCODE_SESSION` | OpenCode attribution |
+| `COPILOT_CLI_SESSION_ID` | GitHub Copilot CLI attribution |
+| `CI` | Disable interactive upgrade prompts when truthy |
+
+## Desktop app
+
+| Variable | Purpose |
+| --- | --- |
+| `TASKBEAN_PORT` | Highest-priority backend port override |
+| `taskbean_PORT` | Portless-provided port fallback |
+| `PORT` | General port fallback |
+| `TASKBEAN_PUBLIC_URL` | Override the public app URL |
+| `PORTLESS_URL` | Portless public URL |
+| `GIT_SHA` | Override the Git SHA returned by `/api/version` |
+| `OTEL_EXPORTER_OTLP_ENDPOINT` | Override the Jaeger OTLP endpoint |
+
+## Tests
+
+| Variable | Purpose |
+| --- | --- |
+| `TASKBEAN_BASE_URL` | Point Playwright at an existing backend |
+| `TASKBEAN_SKIP_WEBSERVER=1` | Prevent Playwright from starting its own backend |
+
+Environment variables take precedence over values in `~/.taskbean/config.json` where both apply.

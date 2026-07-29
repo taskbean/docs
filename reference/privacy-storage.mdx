@@ -1,0 +1,31 @@
+---
+title: "Privacy and storage"
+description: "Understand Taskbean's local SQLite storage, WAL behavior, stored metadata, and outbound network boundary."
+keywords: ["Taskbean privacy", "local SQLite", "taskbean.db", "no cloud"]
+---
+
+Taskbean stores task and agent metadata locally in `~/.taskbean/taskbean.db`. The database uses SQLite WAL mode, normal synchronous writes, foreign keys, and a busy timeout so the CLI and desktop app can share it safely.
+
+## What Taskbean stores
+
+- Task fields such as title, status, priority, notes, tags, due dates, Project, Workspace provenance, agent, and Agent Session ID
+- Agent Session metadata such as model, provider, repository, branch, timestamps, and source path
+- Aggregate token counts and tool-call counts per turn
+- Chronicle suggestion summaries, confidence, source session IDs, repository, branch, pull request and issue references, and changed files
+- Agent detection settings and source scan offsets
+
+## Automatic ingestion boundary
+
+Chronicle and Agent Session ingestion do not store raw prompts, assistant responses, tool-call arguments, tool output, command output, or code content. They store metadata, aggregate counts, file paths, refs, and generated evidence summaries.
+
+Task fields are different. Taskbean stores user-authored titles, notes, tags, and emoji verbatim. Do not paste sensitive prompt, response, tool, or code content into a Task if you do not want it in the local database.
+
+Deleting the local database removes Taskbean's record. It does not delete the original coding-agent logs.
+
+## Network boundary
+
+Task storage and AI inference stay local. The optional weather tool calls Open-Meteo only when you explicitly ask for current weather. Package installation, model downloads, upgrade checks, and optional external services such as Jaeger have their own network behavior.
+
+## Configuration
+
+App settings live in `~/.taskbean/config.json`. Override the data location with `TASKBEAN_HOME` or the full database path with `TASKBEAN_DB`.

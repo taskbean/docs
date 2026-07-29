@@ -1,0 +1,31 @@
+---
+title: "Chronicle app workflow"
+description: "Review Chronicle suggestions in the Taskbean desktop app and keep evidence separate from canonical tasks."
+keywords: ["Chronicle app", "review agent evidence", "Taskbean reconciliation"]
+---
+
+Use the desktop app when you want a visual review queue for suggestions and their source sessions.
+
+## Review a suggestion
+
+1. Open the Chronicle review surface.
+2. Inspect the evidence summary, confidence, source session, repository, branch, and changed-file references.
+3. Choose one outcome:
+   - Approve it as a new Task.
+   - Link it to an existing Task.
+   - Ignore it.
+4. Use undo when an automatic link needs human review.
+
+## API operations
+
+| Operation | Endpoint |
+| --- | --- |
+| List suggestions | `GET /api/chronicle/suggestions` |
+| Approve | `POST /api/chronicle/suggestions/:id/approve` |
+| Link | `POST /api/chronicle/suggestions/:id/link` |
+| Ignore | `POST /api/chronicle/suggestions/:id/ignore` |
+| Undo an automatic link | `POST /api/chronicle/suggestions/:id/undo-auto-link` |
+
+<Warning>
+  A pending suggestion is evidence that work may have happened. It is not a completed Task until you approve or link it.
+</Warning>

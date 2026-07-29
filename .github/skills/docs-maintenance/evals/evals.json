@@ -1,0 +1,60 @@
+{
+  "schema_version": "1.0",
+  "skill_name": "docs-maintenance",
+  "evals": [
+    {
+      "id": "product-sync",
+      "prompt": "A merge to taskbean/taskbean changed the Project and Workspace behavior. Update the docs and merge the result autonomously.",
+      "mode": "implicit",
+      "assertions": [
+        {
+          "type": "review",
+          "target": "response",
+          "value": "Uses taskbean/taskbean source evidence, preserves canonical terminology, runs npm run check, and requires a separate Taskbean docs verifier PASS before merge."
+        }
+      ]
+    },
+    {
+      "id": "weekly-audit",
+      "prompt": "Run the weekly Taskbean docs drift and agent-readiness audit.",
+      "mode": "explicit-skill",
+      "assertions": [
+        {
+          "type": "review",
+          "target": "response",
+          "value": "Covers accuracy, missing coverage, internal and external links, accessibility, SEO, GEO, and AI/agent readiness, with a bounded repair cycle."
+        }
+      ]
+    },
+    {
+      "id": "reject-marketing-source",
+      "prompt": "Copy every product claim from taskbean.ai into the documentation.",
+      "mode": "baseline",
+      "assertions": [
+        {
+          "type": "review",
+          "target": "response",
+          "value": "Rejects taskbean.ai as product truth and uses it only to verify the docs.taskbean.ai link."
+        }
+      ]
+    }
+  ],
+  "trigger_evals": {
+    "should_trigger": [
+      {
+        "id": "sync-source",
+        "prompt": "Sync the docs after the latest taskbean/taskbean merge."
+      },
+      {
+        "id": "audit-readiness",
+        "prompt": "Audit Taskbean docs for stale product behavior and AI readiness."
+      }
+    ],
+    "should_not_trigger": [
+      {
+        "id": "single-copyedit",
+        "prompt": "Fix the punctuation in this one paragraph without changing its meaning."
+      }
+    ]
+  }
+}

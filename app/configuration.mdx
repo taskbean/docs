@@ -1,0 +1,48 @@
+---
+title: "App configuration"
+description: "Configure models, devices, themes, reminders, voice, startup behavior, and the Taskbean PWA."
+keywords: ["Taskbean settings", "Taskbean themes", "Foundry Local models", "reminders"]
+---
+
+The app stores configuration in `~/.taskbean/config.json`.
+
+## Core settings
+
+| Setting | Default | Purpose |
+| --- | --- | --- |
+| `modelPermission` | `ask` | Ask before downloading a recommended model. Set `yolo` to allow automatic downloads. |
+| `preferredDevice` | `auto` | Choose `auto`, `npu`, `gpu`, or `cpu`. |
+| `preferredModel` | `null` | Persist the selected Foundry Local model. |
+| `runOnStartup` | `false` | Register or remove the Windows startup task. |
+| `port` | `null` | Use the default `8275` unless you set a port. |
+| `publicBaseUrl` | `null` | Override the URL the app presents to launchers and integrations. |
+| `timezone` | `null` | Use an IANA time zone or the OS default. |
+| `hideIncompatibleModels` | `false` | Hide models that do not match detected hardware. |
+| `toolCallOnly` | `false` | Require tool-based agent responses. |
+
+Speech settings control the engine, fallback, microphone, Whisper model, live model, and whether a transcript composes text or extracts tasks. Schedule settings control Do Not Disturb and recurring-reminder hours.
+
+## Themes
+
+| Theme | Character |
+| --- | --- |
+| Dark Roast | Dark chocolate background with warm ember accents |
+| Latte | Warm cream surfaces with a caramel accent |
+| Espresso | Crimson-maroon surfaces with crema highlights |
+| Black Coffee | Maximum contrast with coffee-tinted blacks |
+
+The CSS identifiers are `dark-roast`, `latte`, `espresso`, and `black-coffee`. Dark Roast is the default.
+
+## Model switching
+
+Use the model picker in Settings. A switch is locked so only one can run at a time. Taskbean unloads the current model, downloads the selected model when needed, loads it, rebuilds the agent, and runs a smoke test before reporting success.
+
+Model switching is a Settings workflow, not a chat tool.
+
+## Reminders
+
+On Windows, Taskbean can send toast notifications with **Done**, **Snooze**, and **Open** actions. Do Not Disturb suppresses toasts. If `winotify` is unavailable, Taskbean logs the event instead of failing.
+
+## File extraction
+
+Paste long text or upload documents to extract candidate tasks. Taskbean uses MCP and MarkItDown conversion, token-aware chunking, and local AI. Review extracted tasks before treating them as commitments.

@@ -1,0 +1,63 @@
+---
+title: "Chronicle CLI workflow"
+description: "Diagnose, reconcile, review, approve, link, ignore, and undo Chronicle suggestions from the bean CLI."
+keywords: ["bean chronicle", "reconcile agent sessions", "Chronicle suggestions"]
+---
+
+<Steps>
+  <Step title="Check availability">
+
+```bash
+bean chronicle doctor --json
+```
+
+This is read-only.
+  </Step>
+
+  <Step title="Reconcile evidence">
+
+```bash
+bean chronicle reconcile --since 2026-07-01 --json
+```
+  </Step>
+
+  <Step title="Review suggestions">
+
+```bash
+bean chronicle suggestions --status pending --json
+```
+  </Step>
+
+  <Step title="Resolve each suggestion">
+
+Create a Task:
+
+```bash
+bean chronicle approve <suggestion-id> --title "Document the retry policy"
+```
+
+Link to an existing Task:
+
+```bash
+bean chronicle link <suggestion-id> <todo-id>
+```
+
+Ignore irrelevant evidence:
+
+```bash
+bean chronicle ignore <suggestion-id>
+```
+  </Step>
+</Steps>
+
+Return an automatic link to pending review:
+
+```bash
+bean chronicle undo <suggestion-id>
+```
+
+Include reviewed evidence in a report:
+
+```bash
+bean report --date week --include-chronicle
+```

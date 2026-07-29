@@ -1,0 +1,33 @@
+---
+title: "Reports and packages"
+description: "Generate Markdown, JSON, or CSV reports and package task evidence for review."
+keywords: ["bean report", "CSV export", "Taskbean reports", "bean package"]
+---
+
+## Generate a report
+
+```bash
+bean report --date today
+bean report --date week
+bean report --date all --format json
+bean report --date week --format csv
+```
+
+`--format` supports `md`, `json`, and `csv`. There is no separate `bean export` command.
+
+## Include Chronicle evidence
+
+```bash
+bean report --date week --include-chronicle
+```
+
+This adds linked evidence and suggestions that still need review. Without `--include-chronicle`, the report stays focused on canonical Taskbean tasks.
+
+## Package work
+
+```bash
+bean package 42
+bean package --date week --format json
+```
+
+Use packages when you need a focused task handoff or machine-readable evidence bundle. Use reports for time-based rollups.

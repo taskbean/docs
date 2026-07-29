@@ -1,0 +1,45 @@
+---
+title: "Task lifecycle"
+description: "Create, start, block, edit, complete, list, remind, and remove Taskbean tasks from the CLI."
+keywords: ["bean add", "bean done", "bean start", "bean block", "task lifecycle"]
+---
+
+## Create and inspect work
+
+```bash
+bean add "Add retry handling to the sync client"
+bean list
+bean list --status pending
+bean list --by-project
+```
+
+Use `--project <selector>` when the current directory is not enough to identify the target Project.
+
+## Move through the lifecycle
+
+```bash
+bean start 1
+bean block 1
+bean edit 1 --notes "Waiting for the API contract"
+bean done 1
+```
+
+Task statuses are `pending`, `in_progress`, `blocked`, and `done`.
+
+## Add due dates and reminders
+
+```bash
+bean edit 1 --due-date 2026-08-01
+bean remind "Review the retry policy" "tomorrow at 9am"
+```
+
+`bean remind <title> <when>` creates a new pending Task with that reminder. It does not add a reminder to an existing Task ID.
+
+## Correct mistakes
+
+```bash
+bean edit 1 --title "Update the sync client retry policy"
+bean remove 1
+```
+
+Most task commands support `--json` for agents and scripts. Use JSON when another process needs to consume the result.

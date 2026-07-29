@@ -1,122 +1,257 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "maple",
+  "name": "Taskbean",
+  "description": "Local-first task management for developers and coding agents.",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#9A4A00",
+    "light": "#E8863C",
+    "dark": "#9D4D00"
   },
-  "favicon": "/favicon.svg",
+  "background": {
+    "color": {
+      "dark": "#1A120E",
+      "light": "#FAF6F1"
+    }
+  },
+  "appearance": {
+    "default": "dark"
+  },
+  "fonts": {
+    "heading": {
+      "family": "Fraunces",
+      "weight": 700
+    },
+    "body": {
+      "family": "Sora"
+    }
+  },
+  "favicon": "/images/taskbean-favicon.png",
+  "logo": {
+    "light": "/images/taskbean-wordmark-light.png",
+    "dark": "/images/taskbean-wordmark-dark.png",
+    "href": "/"
+  },
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
             "group": "Getting started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
+              "quickstart"
             ]
           },
           {
-            "group": "Customization",
+            "group": "Concepts",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "concepts/architecture",
+              "concepts/glossary"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "CLI",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "cli/installation",
+              "cli/lifecycle",
+              "cli/reporting",
+              "cli/projects-workspaces",
+              "cli/agent-skill",
+              "cli/reference"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "Desktop app",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "app/getting-started",
+              "app/configuration",
+              "app/telemetry",
+              "app/troubleshooting"
+            ]
+          },
+          {
+            "group": "Chronicle",
+            "pages": [
+              "chronicle/overview",
+              "chronicle/cli-workflow",
+              "chronicle/app-workflow"
+            ]
+          },
+          {
+            "group": "Reference",
+            "pages": [
+              "reference/api",
+              "reference/privacy-storage",
+              "reference/environment-variables"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
-        "groups": [
-          {
-            "group": "API documentation",
-            "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
-          }
-        ]
+        "tab": "Releases",
+        "href": "https://github.com/taskbean/taskbean/releases"
       }
     ],
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "Website",
+          "href": "https://taskbean.ai",
+          "icon": "globe"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "GitHub",
+          "href": "https://github.com/taskbean/taskbean",
+          "icon": "github"
         }
       ]
     }
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
   "navbar": {
     "links": [
       {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "label": "How it works",
+        "href": "https://taskbean.ai/how-it-works.html"
       }
     ],
     "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "type": "github",
+      "href": "https://github.com/taskbean/taskbean"
     }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "github": "https://github.com/taskbean",
+      "website": "https://taskbean.ai"
     }
-  }
+  },
+  "seo": {
+    "metatags": {
+      "canonical": "https://docs.taskbean.ai",
+      "og:locale": "en_US"
+    },
+    "indexing": "navigable"
+  },
+  "metadata": {
+    "timestamp": true
+  },
+  "search": {
+    "prompt": "Search Taskbean documentation..."
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "mcp",
+      "chatgpt",
+      "claude",
+      "perplexity",
+      "cursor",
+      "vscode"
+    ]
+  },
+  "markdown": {
+    "instructions": [
+      "Treat taskbean/taskbean as the source of truth for product behavior.",
+      "Use the canonical Project, Workspace, Agent Session, Task, and Unassigned Work terminology from the glossary.",
+      "Do not infer that Windows-specific desktop features apply to the cross-platform CLI."
+    ]
+  },
+  "styling": {
+    "codeblocks": "system"
+  },
+  "redirects": [
+    {
+      "source": "/getting-started/installation",
+      "destination": "/cli/installation",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/quick-start",
+      "destination": "/quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/getting-started/prerequisites",
+      "destination": "/quickstart",
+      "permanent": true
+    },
+    {
+      "source": "/using-taskbean/ai-commands",
+      "destination": "/app/getting-started",
+      "permanent": true
+    },
+    {
+      "source": "/using-taskbean/reminders",
+      "destination": "/app/configuration",
+      "permanent": true
+    },
+    {
+      "source": "/using-taskbean/file-extraction",
+      "destination": "/app/getting-started",
+      "permanent": true
+    },
+    {
+      "source": "/using-taskbean/model-switching",
+      "destination": "/app/configuration",
+      "permanent": true
+    },
+    {
+      "source": "/using-taskbean/themes",
+      "destination": "/app/configuration",
+      "permanent": true
+    },
+    {
+      "source": "/configuration/settings",
+      "destination": "/app/configuration",
+      "permanent": true
+    },
+    {
+      "source": "/configuration/pwa",
+      "destination": "/app/getting-started",
+      "permanent": true
+    },
+    {
+      "source": "/configuration/nerd-mode",
+      "destination": "/app/telemetry",
+      "permanent": true
+    },
+    {
+      "source": "/development/project-structure",
+      "destination": "/concepts/architecture",
+      "permanent": true
+    },
+    {
+      "source": "/development/running-tests",
+      "destination": "/app/getting-started",
+      "permanent": true
+    },
+    {
+      "source": "/development/contributing",
+      "destination": "/concepts/architecture",
+      "permanent": true
+    },
+    {
+      "source": "/help/troubleshooting",
+      "destination": "/app/troubleshooting",
+      "permanent": true
+    },
+    {
+      "source": "/help/known-issues",
+      "destination": "/app/troubleshooting",
+      "permanent": true
+    },
+    {
+      "source": "/development",
+      "destination": "/app/getting-started",
+      "permanent": true
+    },
+    {
+      "source": "/api-reference/introduction",
+      "destination": "/reference/api",
+      "permanent": true
+    }
+  ]
 }
