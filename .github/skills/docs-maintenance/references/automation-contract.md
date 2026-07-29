@@ -1,5 +1,12 @@
 # Automation contract
 
+## Agent topology
+
+- `Taskbean docs` is the only user-invokable agent and coordinates planning, authoring, evaluation, and one bounded improvement cycle.
+- `Taskbean docs maintainer` is the non-user-invokable Actor.
+- `Taskbean docs verifier` is the non-user-invokable, read-only Verifier.
+- The coordinator and Actor cannot issue the merge-gating verdict.
+
 ## Product merge path
 
 Mintlify owns the event trigger:
@@ -38,8 +45,9 @@ For each open pull request authored by Mintlify automation:
 2. Audit existing pages for stale claims and missing user journeys.
 3. Run `npm run check` and `npm run check:external-links`.
 4. Review page titles, descriptions, navigation, canonical URLs, contextual AI options, and published MCP/LLM discoverability.
-5. If no changes are needed, report an evidence-backed no-op.
-6. If changes are needed, create one focused pull request and use the Actor/Verifier flow.
+5. Check `https://docs.taskbean.ai/llms.txt`, `https://docs.taskbean.ai/skill.md`, and the Taskbean search MCP when agent-facing guidance changes.
+6. If no changes are needed, report an evidence-backed no-op.
+7. If changes are needed, create one focused pull request and use the Actor/Verifier flow.
 
 ## Merge authority
 
