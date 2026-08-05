@@ -1,7 +1,7 @@
 ---
 title: "Reports and packages"
-description: "Generate Markdown, JSON, or CSV reports and package task evidence for review."
-keywords: ["bean report", "CSV export", "Taskbean reports", "bean package"]
+description: "Generate Markdown, JSON, or CSV reports, interpret agent effort and token efficiency, and package task evidence for review."
+keywords: ["bean report", "agent effort", "token efficiency", "CSV export", "Taskbean reports", "bean package"]
 ---
 
 ## Generate a report
@@ -14,6 +14,15 @@ bean report --date week --format csv
 ```
 
 `--format` supports `md`, `json`, and `csv`. There is no separate `bean export` command.
+
+## Interpret effort and token efficiency
+
+Markdown and JSON reports include per-agent usage plus effort and token-efficiency data for enabled agents.
+
+- Estimated effort uses three minutes per agent turn. Treat it as a read-only comparison metric, not elapsed time.
+- Tokens per task divides tokens from sessions with linked Tasks by the number of linked Tasks.
+- An agent without linked Tasks shows `N/A` in Markdown and has no `tokensPerTask` field in JSON.
+- CSV reports contain Task rows only.
 
 ## Include Chronicle evidence
 
