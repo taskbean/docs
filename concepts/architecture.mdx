@@ -24,7 +24,11 @@ flowchart TD
   Evidence["Chronicle evidence"] --> Session
 ```
 
-A Project is logical. A Workspace is physical. Multiple checkouts, worktrees, and forks can roll up to the same Project. Taskbean uses an `owner/repo` Project Key for Git-backed work, preferring `upstream` over `origin`.
+A Project is logical. A Workspace is physical. Multiple checkouts, worktrees, and forks can roll up to the same Project.
+
+The Project ID is the durable internal identity. Taskbean uses an `owner/repo` Project Key for Git-backed work, preferring `upstream` over `origin`. If a repository is renamed or transferred, the Project keeps its Project ID, adopts the new Project Key, and keeps the old key as a Project Alias.
+
+An Agent Session without a local path can use a Remote Workspace only when repository metadata or a known Project Alias resolves one Project without ambiguity. Otherwise, it remains Unassigned Work. Repository identity establishes Project membership, but stable lineage evidence is required before Taskbean merges a Remote Workspace with a local Workspace.
 
 Read the [glossary](/concepts/glossary) before designing integrations that create or resolve Projects.
 

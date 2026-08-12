@@ -1,7 +1,7 @@
 ---
 title: "Glossary"
-description: "Canonical Taskbean language for Projects, Workspaces, Agent Sessions, Tasks, and unresolved work."
-keywords: ["Taskbean glossary", "Project Key", "Workspace", "Agent Session", "Unassigned Work"]
+description: "Canonical Taskbean language for Project identity, Workspaces, Agent Sessions, Tasks, and unresolved work."
+keywords: ["Taskbean glossary", "Project ID", "Project Key", "Project Alias", "Remote Workspace", "Agent Session"]
 ---
 
 Use these terms consistently in documentation, integrations, and reports.
@@ -10,8 +10,14 @@ Use these terms consistently in documentation, integrations, and reports.
   <Accordion title="Project">
     A logical repo or product that work rolls up to for task lists, usage, reconciliation, and reports. A Project is not an individual checkout, worktree, fork, or Agent Session. Git-backed Projects display as `owner/repo` by default.
   </Accordion>
+  <Accordion title="Project ID">
+    The durable internal identity of a Project. It does not change when a repository is renamed or transferred.
+  </Accordion>
   <Accordion title="Project Key">
-    The stable identity used to recognize the same Project across multiple Workspaces. Git-backed work uses the nearest repository owner and name, preferring `upstream` over `origin`. Work without a usable GitHub remote falls back to the canonical local path.
+    The current canonical identity used to recognize a Project across multiple Workspaces. Git-backed work uses the nearest repository owner and name, preferring `upstream` over `origin`. Work without a usable GitHub remote falls back to the canonical local path. When a repository is renamed or transferred, the Project keeps its Project ID, adopts the new Project Key, and retains the old key as a Project Alias.
+  </Accordion>
+  <Accordion title="Project Alias">
+    A former Project Key or provider identity that still resolves to the same Project. An alias helps Taskbean recognize repository renames, transfers, and provider records without making provider-specific values canonical.
   </Accordion>
   <Accordion title="Project Selector">
     A user-provided value that identifies a Project by key or display name, or a Workspace when the value clearly looks like a path. A Workspace selector resolves to its owning Project.
@@ -27,6 +33,9 @@ Use these terms consistently in documentation, integrations, and reports.
   </Accordion>
   <Accordion title="Discovered Workspace">
     A Workspace observed from Agent Session metadata or task provenance but not explicitly tracked. It can support attribution and rollups, but Taskbean does not mutate it with skill files or cleanup actions.
+  </Accordion>
+  <Accordion title="Remote Workspace">
+    A pathless Workspace where an Agent Session runs outside the local machine. Taskbean creates it only when repository metadata or a known Project Alias resolves one Project without ambiguity. Otherwise, the session remains Unassigned Work. A Remote Workspace and a local Workspace merge only when stable lineage evidence proves that they are the same execution lineage.
   </Accordion>
   <Accordion title="Primary Workspace">
     The user-changeable Workspace a Project uses by default for path-dependent actions such as opening folders, installing skills, or diagnostics. It is not inferred only from the most recent Agent Session.
