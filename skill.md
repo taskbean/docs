@@ -17,7 +17,7 @@ Use this documentation skill when you need to:
 
 - Install, update, or troubleshoot the Taskbean CLI.
 - Create, start, block, edit, complete, list, or report Tasks.
-- Understand Projects, Project Keys, Project Selectors, and Workspaces.
+- Understand Project identity, Project Selectors, and Workspaces.
 - Attribute work to Agent Sessions or reconcile Chronicle evidence.
 - Install or update the Taskbean Agent Skill for a coding agent.
 - Configure or troubleshoot the desktop app and its local API.
@@ -33,7 +33,7 @@ Use this documentation skill when you need to:
 
 1. Identify whether the request concerns the cross-platform CLI, the Windows-specific desktop app, or both.
 2. Find the smallest relevant page through `llms.txt` or the Taskbean documentation search MCP at `https://docs.taskbean.ai/mcp`.
-3. Use canonical terms exactly: Project, Project Key, Project Selector, Workspace, Tracked Project, Tracked Workspace, Discovered Workspace, Primary Workspace, Agent Session, Copilot Fork, Task, and Unassigned Work.
+3. Use canonical terms exactly: Project, Project ID, Project Key, Project Alias, Project Selector, Workspace, Tracked Project, Tracked Workspace, Discovered Workspace, Remote Workspace, Primary Workspace, Agent Session, Copilot Fork, Task, and Unassigned Work.
 4. Prefer JSON output when another process needs to consume `bean` command results.
 5. Treat Chronicle suggestions as review evidence until the user approves or links them.
 6. Use the installed Taskbean Agent Skill when the user wants an agent to record coding work. This documentation skill explains Taskbean; it does not replace the installed action skill.

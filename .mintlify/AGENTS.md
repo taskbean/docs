@@ -2,7 +2,7 @@
 
 Use `taskbean/taskbean` as the only source of truth for product behavior. Read `CONTEXT.md` for canonical terms, `PRODUCT.md` for audience and boundaries, and current source and tests for exact behavior. Legacy content may be migrated from `taskbean/taskbean.ai/docs`, but it is never product evidence.
 
-Use canonical Taskbean terms exactly: Project, Project Key, Project Selector, Workspace, Tracked Project, Tracked Workspace, Discovered Workspace, Primary Workspace, Agent Session, Copilot Fork, Task, and Unassigned Work.
+Use canonical Taskbean terms exactly: Project, Project ID, Project Key, Project Alias, Project Selector, Workspace, Tracked Project, Tracked Workspace, Discovered Workspace, Remote Workspace, Primary Workspace, Agent Session, Copilot Fork, Task, and Unassigned Work.
 
 Before editing, read `docs.json`, `.mintlify/product-brief.md`, and related pages. Prefer focused updates over duplicate pages. Never invent commands, flags, defaults, UI labels, platform support, or product behavior.
 

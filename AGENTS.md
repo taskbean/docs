@@ -31,7 +31,7 @@ Never invent commands, flags, defaults, UI labels, compatibility claims, or prod
 
 - Use active voice and second person.
 - Keep sentences concise and headings in sentence case.
-- Use Taskbean's canonical terms exactly: Project, Project Key, Project Selector, Workspace, Tracked Project, Tracked Workspace, Discovered Workspace, Primary Workspace, Agent Session, Copilot Fork, Task, and Unassigned Work.
+- Use Taskbean's canonical terms exactly: Project, Project ID, Project Key, Project Alias, Project Selector, Workspace, Tracked Project, Tracked Workspace, Discovered Workspace, Remote Workspace, Primary Workspace, Agent Session, Copilot Fork, Task, and Unassigned Work.
 - Use root-relative internal links without file extensions.
 - Give every page a `title` and useful `description`.
 - Add new pages to `docs.json`.
