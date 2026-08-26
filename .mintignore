@@ -6,5 +6,8 @@
 drafts/
 *.draft.mdx
 
+# Retired Mintlify starter specification
+api-reference/openapi.json
+
 # Agent instructions
 AGENTS.md
