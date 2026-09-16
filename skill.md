@@ -33,7 +33,7 @@ Use this documentation skill when you need to:
 
 1. Identify whether the request concerns the cross-platform CLI, the Windows-specific desktop app, or both.
 2. Find the smallest relevant page through `llms.txt` or the Taskbean documentation search MCP at `https://docs.taskbean.ai/mcp`.
-3. Use canonical terms exactly: Project, Project ID, Project Key, Project Alias, Project Selector, Workspace, Tracked Project, Tracked Workspace, Discovered Workspace, Remote Workspace, Primary Workspace, Agent Session, Copilot Fork, Task, and Unassigned Work.
+3. Use canonical terms exactly: Project, Project ID, Project Key, Project Alias, Project Selector, Workspace, Tracked Project, Tracked Workspace, Discovered Workspace, Remote Workspace, Primary Workspace, Agent Session, Copilot Fork, Task, Unassigned Work, Execution Profile, Kickoff Prompt, Execution Record, and Execution Step.
 4. Prefer JSON output when another process needs to consume `bean` command results.
 5. Treat Chronicle suggestions as review evidence until the user approves or links them.
 6. Use the installed Taskbean Agent Skill when the user wants an agent to record coding work. This documentation skill explains Taskbean; it does not replace the installed action skill.
@@ -43,6 +43,7 @@ Use this documentation skill when you need to:
 - Do not use `taskbean.ai` or legacy documentation as product evidence.
 - Do not infer that Windows-specific desktop features apply to the cross-platform CLI.
 - Do not invent commands, flags, defaults, UI labels, compatibility, or product behavior.
+- Do not infer available execution commands or desktop controls from domain definitions alone.
 - Do not present pending Chronicle suggestions as canonical Tasks or completed work.
 - Do not claim Taskbean imports raw prompts, responses, tool outputs, or command output by default.
 

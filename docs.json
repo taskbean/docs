@@ -155,7 +155,8 @@
   "markdown": {
     "instructions": [
       "Treat taskbean/taskbean as the source of truth for product behavior.",
-      "Use the canonical Project, Project ID, Project Key, Project Alias, Project Selector, Workspace, Tracked Project, Tracked Workspace, Discovered Workspace, Remote Workspace, Primary Workspace, Agent Session, Copilot Fork, Task, and Unassigned Work terminology from the glossary.",
+      "Use the canonical Project, Project ID, Project Key, Project Alias, Project Selector, Workspace, Tracked Project, Tracked Workspace, Discovered Workspace, Remote Workspace, Primary Workspace, Agent Session, Copilot Fork, Task, Unassigned Work, Execution Profile, Kickoff Prompt, Execution Record, and Execution Step terminology from the glossary.",
+      "Execution terms are domain definitions, not evidence of available CLI commands or desktop controls.",
       "Do not infer that Windows-specific desktop features apply to the cross-platform CLI."
     ]
   },

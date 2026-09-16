@@ -1,7 +1,7 @@
 ---
 title: "Glossary"
-description: "Canonical Taskbean language for Project identity, Workspaces, Agent Sessions, Tasks, and unresolved work."
-keywords: ["Taskbean glossary", "Project ID", "Project Key", "Project Alias", "Remote Workspace", "Agent Session"]
+description: "Canonical Taskbean language for Project identity, Workspaces, Agent Sessions, Tasks, and agent execution concepts."
+keywords: ["Taskbean glossary", "Project ID", "Project Key", "Project Alias", "Remote Workspace", "Agent Session", "Execution Profile", "Kickoff Prompt", "Execution Record", "Execution Step"]
 ---
 
 Use these terms consistently in documentation, integrations, and reports.
@@ -52,6 +52,20 @@ Use these terms consistently in documentation, integrations, and reports.
   <Accordion title="Unassigned Work">
     Tasks, Agent Sessions, or evidence that Taskbean cannot confidently resolve to a Project. Taskbean presents this work for review instead of inventing a Project from a session ID, GUID, or folder basename.
   </Accordion>
+  <Accordion title="Execution Profile">
+    The automatically discovered context Taskbean uses to prepare a Task for agent execution. It includes relevant Project instructions and available agent capabilities, with optional global, Project, or Task overrides.
+  </Accordion>
+  <Accordion title="Kickoff Prompt">
+    The environment-aware, optimized instruction Taskbean prepares for an Agent Session to execute a Task. A Kickoff Prompt can be revised, copied, or launched without changing the Task itself.
+  </Accordion>
+  <Accordion title="Execution Record">
+    The link between a canonical Task and the Agent Session that executes it, including the Kickoff Prompt version, execution status, and review evidence.
+  </Accordion>
+  <Accordion title="Execution Step">
+    A session-scoped step in an agent's plan for completing a Task. Execution Steps can be added, removed, renamed, or reordered during execution and remain subordinate to the canonical Task.
+  </Accordion>
 </AccordionGroup>
+
+The execution terms define domain concepts, not new CLI commands or desktop controls. Use the [CLI reference](/cli/reference) and [desktop guide](/app/getting-started) for supported workflows.
 
 The canonical definitions live in [`CONTEXT.md`](https://github.com/taskbean/taskbean/blob/main/CONTEXT.md). Architecture decisions [0001](https://github.com/taskbean/taskbean/blob/main/docs/adr/0001-owner-repo-project-key.md), [0002](https://github.com/taskbean/taskbean/blob/main/docs/adr/0002-first-class-workspaces.md), and [0003](https://github.com/taskbean/taskbean/blob/main/docs/adr/0003-replace-legacy-project-fields.md) explain the identity model.

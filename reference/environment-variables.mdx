@@ -26,8 +26,8 @@ keywords: ["TASKBEAN_HOME", "TASKBEAN_DB", "TASKBEAN_PORT", "Taskbean environmen
 | `TASKBEAN_PORT` | Highest-priority backend port override |
 | `taskbean_PORT` | Portless-provided port fallback |
 | `PORT` | General port fallback |
-| `TASKBEAN_PUBLIC_URL` | Override the public app URL |
-| `PORTLESS_URL` | Portless public URL |
+| `TASKBEAN_PUBLIC_URL` | Set the public app URL when `publicBaseUrl` is unset |
+| `PORTLESS_URL` | Portless public URL when `publicBaseUrl` and `TASKBEAN_PUBLIC_URL` are unset |
 | `GIT_SHA` | Override the Git SHA returned by `/api/version` |
 | `OTEL_EXPORTER_OTLP_ENDPOINT` | Override the Jaeger OTLP endpoint |
 
@@ -38,4 +38,4 @@ keywords: ["TASKBEAN_HOME", "TASKBEAN_DB", "TASKBEAN_PORT", "Taskbean environmen
 | `TASKBEAN_BASE_URL` | Point Playwright at an existing backend |
 | `TASKBEAN_SKIP_WEBSERVER=1` | Prevent Playwright from starting its own backend |
 
-Environment variables take precedence over values in `~/.taskbean/config.json` where both apply.
+For the backend port, valid environment variables take precedence over `port` in `~/.taskbean/config.json`. For the public app URL, a non-empty `publicBaseUrl` in that file takes precedence over `TASKBEAN_PUBLIC_URL` and `PORTLESS_URL`.
