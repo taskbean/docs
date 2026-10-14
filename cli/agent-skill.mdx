@@ -6,6 +6,16 @@ keywords: ["Taskbean Agent Skill", "Copilot CLI", "Claude Code", "Codex", "OpenC
 
 The Taskbean Agent Skill teaches coding agents when to create, start, block, and complete tasks. Its source lives at [`.agents/skills/taskbean/SKILL.md`](https://github.com/taskbean/taskbean/blob/main/.agents/skills/taskbean/SKILL.md).
 
+## Detect installed agents
+
+```bash
+bean install --agent auto
+```
+
+Taskbean checks your `PATH` for the `copilot`, `claude`, `codex`, and `opencode` CLIs and installs the skill for each one it finds. If none are on `PATH`, the command reports an error and installs nothing. Use `--agent all` instead if you want to install for every supported agent without detecting its CLI.
+
+Add `--global` to install in your home directory instead of the current directory.
+
 ## Install by agent
 
 ```bash
@@ -16,7 +26,7 @@ bean install --agent opencode
 bean install --agent all
 ```
 
-Add `--global` to install in your home directory instead of the current Project.
+Add `--global` to install in your home directory instead of the current directory.
 
 | Agent | Install location | Verification |
 | --- | --- | --- |
